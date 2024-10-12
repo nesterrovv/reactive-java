@@ -1,4 +1,4 @@
-package com.nesterrovv.reativejava.model;
+package com.nesterrovv.reactivejava.model;
 
 import java.time.Instant;
 import java.util.List;

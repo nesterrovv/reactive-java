@@ -1,6 +1,6 @@
-package com.nesterrovv.reativejava;
+package com.nesterrovv.reactivejava;
 
-import com.nesterrovv.reativejava.timer.StatisticsCalculatorTimer;
+import com.nesterrovv.reactivejava.timer.StatisticsCalculatorTimer;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
