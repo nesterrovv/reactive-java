@@ -12,4 +12,5 @@ import java.util.List;
 public class Office {
     private String address;
     private List<Colleague> colleagues;
+    private Company company;
 }

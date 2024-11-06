@@ -36,7 +36,7 @@ class StatisticsCollector implements Collector<Company, Map<String, List<JobResp
                                 map.put(company.getTitle(), currentJobResponsibilities); // Собираем их в список
 
                             }
-                    );
+                    ); // fix
         };
     }
 

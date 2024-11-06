@@ -18,5 +18,5 @@ public class Colleague {
     private Color hairColor;
     private PassportData passportData;
     private List<JobResponsibility> jobResponsibilities;
-
+    private Office office;
 }

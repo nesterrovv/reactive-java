@@ -28,7 +28,7 @@ public class CompanyGenerator {
     public static Company generate() {
         Company company = new Company();
         company.setTitle(TITLES.get(RANDOM.nextInt(TITLES.size())));
-        company.setOffices(OfficeGenerator.generate(RANDOM.nextInt(MIN_COUNT_OFFICES, MAX_COUNT_OFFICES)));
+        company.setOffices(OfficeGenerator.generate(RANDOM.nextInt(MIN_COUNT_OFFICES, MAX_COUNT_OFFICES), company));
         return company;
     }
 

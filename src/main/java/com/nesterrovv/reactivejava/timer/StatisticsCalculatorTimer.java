@@ -1,8 +1,6 @@
 package com.nesterrovv.reactivejava.timer;
 
-import com.nesterrovv.reactivejava.generator.ColleagueGenerator;
 import com.nesterrovv.reactivejava.generator.CompanyGenerator;
-import com.nesterrovv.reactivejava.model.Colleague;
 import com.nesterrovv.reactivejava.model.Company;
 import com.nesterrovv.reactivejava.statistics.StatisticsCalculator;
 import java.util.List;

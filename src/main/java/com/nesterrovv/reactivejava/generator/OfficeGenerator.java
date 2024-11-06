@@ -1,6 +1,7 @@
 package com.nesterrovv.reactivejava.generator;
 
 import com.nesterrovv.reactivejava.model.Colleague;
+import com.nesterrovv.reactivejava.model.Company;
 import com.nesterrovv.reactivejava.model.Office;
 
 import java.util.ArrayList;
@@ -27,17 +28,18 @@ public class OfficeGenerator {
 
     private OfficeGenerator() {}
 
-    public static Office generate(){
+    public static Office generate(Company company){
         Office office = new Office();
         office.setAddress(ADDRESSES.get(RANDOM.nextInt(ADDRESSES.size())));
-        office.setColleagues(ColleagueGenerator.generateColleagues(RANDOM.nextInt(MIN_EMPLOYEES, MAX_EMPLOYEES)));
+        office.setColleagues(ColleagueGenerator.generateColleagues(RANDOM.nextInt(MIN_EMPLOYEES, MAX_EMPLOYEES), office));
+        office.setCompany(company);
         return office;
     }
 
-    public static List<Office> generate(int count) {
+    public static List<Office> generate(int count, Company company) {
         List<Office> Offices = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            Offices.add(generate());
+            Offices.add(generate(company));
         }
         return Offices;
     }

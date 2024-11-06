@@ -77,7 +77,7 @@ public final class StatisticsCalculator {
                 )
                 .collect(Collectors.groupingBy(Map.Entry::getKey, Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
 
-        responsibilitiesByCompany.forEach((companyName, responsibilities) -> {
+        responsibilitiesByCompany.forEach((companyName, responsibilities) -> { // fix
             long totalResponsibilities = responsibilities.size();
 
             Map<String, Long> responsibilitiesCount = responsibilities.stream()
