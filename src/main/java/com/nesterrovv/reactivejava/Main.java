@@ -19,7 +19,6 @@ public final class Main {
         StatisticsCalculatorTimer.calculate(MEDIUM_COLLECTION_SIZE);
         log.info("--- LARGE COLLECTION ---");
         StatisticsCalculatorTimer.calculate(LARGE_COLLECTION_SIZE);
-        log.info("Test of develop branch");
     }
 
 }

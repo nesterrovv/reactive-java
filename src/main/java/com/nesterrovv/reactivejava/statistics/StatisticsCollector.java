@@ -25,18 +25,12 @@ class StatisticsCollector implements Collector<Company, Map<String, List<JobResp
     @Override
     public BiConsumer<Map<String, List<JobResponsibility>>, Company> accumulator() {
         return (map, company) -> {
-            company.getOffices().stream()  // Итерируем по офисам
-                    .forEach(office -> {
-                                List<JobResponsibility> currentJobResponsibilities = map.getOrDefault(company.getTitle(), new ArrayList<>());
+            List<JobResponsibility> jobResponsibilities = company.getOffices().stream()
+                    .flatMap(office -> office.getColleagues().stream())
+                    .flatMap(colleague -> colleague.getJobResponsibilities().stream())
+                    .collect(Collectors.toList());
 
-                                office.getColleagues().stream()
-                                        .flatMap(colleague -> colleague.getJobResponsibilities().stream())
-                                        .forEach(currentJobResponsibilities::add);
-
-                                map.put(company.getTitle(), currentJobResponsibilities); // Собираем их в список
-
-                            }
-                    ); // fix
+            map.put(company.getTitle(), jobResponsibilities);
         };
     }
 
@@ -50,27 +44,24 @@ class StatisticsCollector implements Collector<Company, Map<String, List<JobResp
 
     @Override
     public Function<Map<String, List<JobResponsibility>>, Map<String, Map<String, Double>>> finisher() {
-        return map -> {
-            Map<String, Map<String, Double>> statistics = new HashMap<>();
+        return map -> map.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> {
+                            var responsibilityCount = entry.getValue().stream()
+                                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-            map.entrySet().stream().forEach( entry -> {
-                var responsibilityCount = entry.getValue().stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                            long totalResponsibilities = responsibilityCount.values().stream()
+                                    .mapToLong(Long::longValue)
+                                    .sum();
 
-                long totalResponsibilities = responsibilityCount.values().stream()
-                        .mapToLong(Long::longValue)
-                        .sum();
-
-                Map<String, Double> responsibilityFrequency = responsibilityCount.entrySet().stream()
-                        .collect(Collectors.toMap(
-                                frequencyEntry -> frequencyEntry.getKey().getTitle(),
-                                frequencyEntry -> (frequencyEntry.getValue() * 100.0) / totalResponsibilities
-                        ));
-
-                statistics.put(entry.getKey(), responsibilityFrequency);
-            });
-
-            return statistics;
-        };
+                            return responsibilityCount.entrySet().stream()
+                                    .collect(Collectors.toMap(
+                                            frequencyEntry -> frequencyEntry.getKey().getTitle(),
+                                            frequencyEntry -> (frequencyEntry.getValue() * 100.0) / totalResponsibilities
+                                    ));
+                        }
+                ));
     }
 
     @Override

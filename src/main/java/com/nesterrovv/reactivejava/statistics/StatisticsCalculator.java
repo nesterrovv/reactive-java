@@ -4,6 +4,7 @@ import com.nesterrovv.reactivejava.model.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -77,35 +78,49 @@ public final class StatisticsCalculator {
                 )
                 .collect(Collectors.groupingBy(Map.Entry::getKey, Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
 
-        responsibilitiesByCompany.forEach((companyName, responsibilities) -> { // fix
-            long totalResponsibilities = responsibilities.size();
+        responsibilitiesByCompany.entrySet().stream()
+                .map(entry -> {
+                    String companyName = entry.getKey();
+                    List<JobResponsibility> responsibilities = entry.getValue();
+                    long totalResponsibilities = responsibilities.size();
 
-            Map<String, Long> responsibilitiesCount = responsibilities.stream()
-                    .collect(Collectors.groupingBy(JobResponsibility::getTitle, Collectors.counting()));
+                    Map<String, Long> responsibilitiesCount = responsibilities.stream()
+                            .collect(Collectors.groupingBy(JobResponsibility::getTitle, Collectors.counting()));
 
-            Map<String, Double> responsibilitiesPercentage = responsibilitiesCount.entrySet().stream()
-                    .collect(Collectors.toMap(
-                            Map.Entry::getKey,
-                            entry -> (entry.getValue() * TO_PERCENTS) / totalResponsibilities
-                    ));
+                    Map<String, Double> responsibilitiesPercentage = responsibilitiesCount.entrySet().stream()
+                            .collect(Collectors.toMap(
+                                    Map.Entry::getKey,
+                                    e -> (e.getValue() * 100.0) / totalResponsibilities
+                            ));
 
-            log.info(COMPANY + companyName);
-            responsibilitiesPercentage.forEach((title, percentage) ->
-                    log.info(RESPONSIBILITY + title + ", " + PERCENTAGE + percentage + "%")
-            );
-        });
+                    log.info(COMPANY + companyName);
+                    responsibilitiesPercentage.entrySet().stream()
+                            .map(e -> RESPONSIBILITY + e.getKey() + ", " + PERCENTAGE + e.getValue() + "%")
+                            .forEach(log::info);
 
-
+                    return null;
+                })
+                .toArray();
     }
+
 
     // 3.3 Custom collector
     public static void calculateStatisticsWithCustomCollector(List<Company> companies) {
         Map<String, Map<String, Double>> statistics = companies.stream().collect(StatisticsCollector.collect());
-        statistics.forEach((company, statistic) -> {
-            log.info(COMPANY + company);
-            statistic.forEach((responsibility, percentage) -> {
-                log.info(RESPONSIBILITY + responsibility + ", " + PERCENTAGE + percentage + "%");
-            });
-        });
+        statistics.entrySet().stream()
+                .map(entry -> {
+                    String companyName = entry.getKey();
+                    Map<String, Double> statistic = entry.getValue();
+
+                    Stream.concat(
+                            Stream.of(COMPANY + companyName),
+                            statistic.entrySet().stream()
+                                    .map(e -> RESPONSIBILITY + e.getKey() + ", " + PERCENTAGE + e.getValue() + "%")
+                    ).toArray();
+
+                    return null;
+                })
+                .toArray();
     }
+
 }
