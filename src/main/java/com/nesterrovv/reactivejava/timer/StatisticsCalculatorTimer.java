@@ -1,8 +1,8 @@
-package com.nesterrovv.reativejava.timer;
+package com.nesterrovv.reactivejava.timer;
 
-import com.nesterrovv.reativejava.generator.ColleagueGenerator;
-import com.nesterrovv.reativejava.model.Colleague;
-import com.nesterrovv.reativejava.statistics.StatisticsCalculator;
+import com.nesterrovv.reactivejava.generator.CompanyGenerator;
+import com.nesterrovv.reactivejava.model.Company;
+import com.nesterrovv.reactivejava.statistics.StatisticsCalculator;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,27 +14,26 @@ public final class StatisticsCalculatorTimer {
     private StatisticsCalculatorTimer() {}
 
     public static void calculate(int collectionSize) {
-        List<Colleague> colleagues = ColleagueGenerator.generateColleagues(collectionSize);
-        //colleagues.forEach(System.out::println);
+        List<Company> companies = CompanyGenerator.generate(collectionSize);
 
         long startTime;
         long endTime;
 
         log.info("\nIterative Statistics Calculation:");
         startTime = System.currentTimeMillis();
-        StatisticsCalculator.calculateStatisticsIterative(colleagues);
+        StatisticsCalculator.calculateStatisticsIterative(companies);
         endTime = System.currentTimeMillis();
         log.info("Total Time taken (Iterative): " + (endTime - startTime) + MILLISECONDS);
 
         log.info("Stream API Statistics Calculation:");
         startTime = System.currentTimeMillis();
-        StatisticsCalculator.calculateStatisticsWithStreams(colleagues);
+        StatisticsCalculator.calculateStatisticsWithStreams(companies);
         endTime = System.currentTimeMillis();
         log.info("Total Time taken (Stream API): " + (endTime - startTime) + MILLISECONDS);
 
         log.info("Custom Collector Statistics Calculation:");
         startTime = System.currentTimeMillis();
-        StatisticsCalculator.calculateStatisticsWithCustomCollector(colleagues);
+        StatisticsCalculator.calculateStatisticsWithCustomCollector(companies);
         endTime = System.currentTimeMillis();
         log.info("Total Time taken (Custom Collector): " + (endTime - startTime) + MILLISECONDS);
     }

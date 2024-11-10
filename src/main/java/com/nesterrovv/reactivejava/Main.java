@@ -1,6 +1,6 @@
-package com.nesterrovv.reativejava;
+package com.nesterrovv.reactivejava;
 
-import com.nesterrovv.reativejava.timer.StatisticsCalculatorTimer;
+import com.nesterrovv.reactivejava.timer.StatisticsCalculatorTimer;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -19,7 +19,6 @@ public final class Main {
         StatisticsCalculatorTimer.calculate(MEDIUM_COLLECTION_SIZE);
         log.info("--- LARGE COLLECTION ---");
         StatisticsCalculatorTimer.calculate(LARGE_COLLECTION_SIZE);
-        log.info("Test of develop branch");
     }
 
 }

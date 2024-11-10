@@ -1,4 +1,4 @@
-package com.nesterrovv.reativejava.model;
+package com.nesterrovv.reactivejava.model;
 
 import java.time.Instant;
 import java.util.List;
@@ -18,5 +18,5 @@ public class Colleague {
     private Color hairColor;
     private PassportData passportData;
     private List<JobResponsibility> jobResponsibilities;
-
+    private Office office;
 }

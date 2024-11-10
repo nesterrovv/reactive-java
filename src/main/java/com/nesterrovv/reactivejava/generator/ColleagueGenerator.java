@@ -1,9 +1,10 @@
-package com.nesterrovv.reativejava.generator;
+package com.nesterrovv.reactivejava.generator;
 
-import com.nesterrovv.reativejava.model.Colleague;
-import com.nesterrovv.reativejava.model.Color;
-import com.nesterrovv.reativejava.model.JobResponsibility;
-import com.nesterrovv.reativejava.model.PassportData;
+import com.nesterrovv.reactivejava.model.Colleague;
+import com.nesterrovv.reactivejava.model.Color;
+import com.nesterrovv.reactivejava.model.JobResponsibility;
+import com.nesterrovv.reactivejava.model.Office;
+import com.nesterrovv.reactivejava.model.PassportData;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -43,7 +44,7 @@ public final class ColleagueGenerator {
             new JobResponsibility("Analyze Data", "Perform data analysis to support decision-making", 20, true)
     );
 
-    public static Colleague generateColleague() {
+    public static Colleague generateColleague(Office office) {
         int age = RANDOM.nextInt(MAXIMAL_AGE_BOUND) + MINIMAL_AGE_BOUND; // Random age between 18 and 60
         String name = NAMES.get(RANDOM.nextInt(NAMES.size()));
         Instant birthTime = Instant.now().minus(age * DAYS_IN_YEAR, ChronoUnit.DAYS);
@@ -62,13 +63,13 @@ public final class ColleagueGenerator {
         for (int i = 0; i < numResponsibilities; i++) {
             jobResponsibilities.add(RESPONSIBILITIES.get(RANDOM.nextInt(RESPONSIBILITIES.size())));
         }
-        return new Colleague(age, name, birthTime, eyeColor, hairColor, passportData, jobResponsibilities);
+        return new Colleague(age, name, birthTime, eyeColor, hairColor, passportData, jobResponsibilities, office);
     }
 
-    public static List<Colleague> generateColleagues(int count) {
+    public static List<Colleague> generateColleagues(int count, Office office) {
         List<Colleague> colleagues = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            colleagues.add(generateColleague());
+            colleagues.add(generateColleague(office));
         }
         return colleagues;
     }
