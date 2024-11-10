@@ -2,8 +2,11 @@ package com.nesterrovv.reactivejava.statistics;
 
 import com.nesterrovv.reactivejava.model.Company;
 import com.nesterrovv.reactivejava.model.JobResponsibility;
-
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
@@ -11,7 +14,10 @@ import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-class StatisticsCollector implements Collector<Company, Map<String, List<JobResponsibility>>, Map<String, Map<String, Double>>> {
+public class StatisticsCollector
+        implements Collector<Company, Map<String, List<JobResponsibility>>, Map<String, Map<String, Double>>> {
+
+    private static final double TO_PERCENTS = 100.0;
 
     public static StatisticsCollector collect() {
         return new StatisticsCollector();
@@ -58,7 +64,8 @@ class StatisticsCollector implements Collector<Company, Map<String, List<JobResp
                             return responsibilityCount.entrySet().stream()
                                     .collect(Collectors.toMap(
                                             frequencyEntry -> frequencyEntry.getKey().getTitle(),
-                                            frequencyEntry -> (frequencyEntry.getValue() * 100.0) / totalResponsibilities
+                                            frequencyEntry -> (frequencyEntry.getValue() * TO_PERCENTS)
+                                                    / totalResponsibilities
                                     ));
                         }
                 ));

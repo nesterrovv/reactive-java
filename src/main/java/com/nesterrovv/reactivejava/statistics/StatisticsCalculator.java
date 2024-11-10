@@ -1,13 +1,18 @@
 package com.nesterrovv.reactivejava.statistics;
 
-import com.nesterrovv.reactivejava.model.*;
-
-import java.util.*;
+import com.nesterrovv.reactivejava.model.Colleague;
+import com.nesterrovv.reactivejava.model.Company;
+import com.nesterrovv.reactivejava.model.JobResponsibility;
+import com.nesterrovv.reactivejava.model.Office;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import lombok.extern.slf4j.Slf4j;
-
+import org.jetbrains.annotations.NotNull;
 
 @Slf4j
 public final class StatisticsCalculator {
@@ -21,6 +26,7 @@ public final class StatisticsCalculator {
     private StatisticsCalculator() {}
 
     // 3.1 Iterative approach
+    @SuppressWarnings("NestedForDepth")
     public static void calculateStatisticsIterative(List<Company> companies) {
         Map<String, List<JobResponsibility>> responsibilitiesByCompany = new HashMap<>();
 
@@ -38,33 +44,37 @@ public final class StatisticsCalculator {
                 }
             }
         }
-
         for (Map.Entry<String, List<JobResponsibility>> entry : responsibilitiesByCompany.entrySet()) {
-            String companyName = entry.getKey();
-            List<JobResponsibility> responsibilities = entry.getValue();
-            long totalResponsibilities = responsibilities.size();
-
-            Map<String, Long> responsibilitiesCount = new HashMap<>();
-            for (JobResponsibility jobResponsibility : responsibilities) {
-                String title = jobResponsibility.getTitle();
-                responsibilitiesCount.put(title, responsibilitiesCount.getOrDefault(title, 0L) + 1);
-            }
-
-            Map<String, Double> responsibilitiesPercentage = new HashMap<>();
-            for (Map.Entry<String, Long> countEntry : responsibilitiesCount.entrySet()) {
-                String title = countEntry.getKey();
-                long count = countEntry.getValue();
-                double percentage = (count * TO_PERCENTS) / totalResponsibilities;
-                responsibilitiesPercentage.put(title, percentage);
-            }
-
-            log.info(COMPANY + companyName);
+            Map<String, Double> responsibilitiesPercentage = calculatePercentsForCompany(entry);
             for (Map.Entry<String, Double> percentageEntry : responsibilitiesPercentage.entrySet()) {
-                log.info(RESPONSIBILITY + percentageEntry.getKey() + ", " + PERCENTAGE + percentageEntry.getValue() + "%");
+                log.info(
+                        RESPONSIBILITY
+                        + percentageEntry.getKey()
+                        + ", " + PERCENTAGE + percentageEntry.getValue() + "%"
+                );
             }
         }
     }
 
+    private static @NotNull Map<String, Double> calculatePercentsForCompany(
+            Map.Entry<String, List<JobResponsibility>> entry
+    ) {
+        List<JobResponsibility> responsibilities = entry.getValue();
+        long totalResponsibilities = responsibilities.size();
+        Map<String, Long> responsibilitiesCount = new HashMap<>();
+        for (JobResponsibility jobResponsibility : responsibilities) {
+            String title = jobResponsibility.getTitle();
+            responsibilitiesCount.put(title, responsibilitiesCount.getOrDefault(title, 0L) + 1);
+        }
+        Map<String, Double> responsibilitiesPercentage = new HashMap<>();
+        for (Map.Entry<String, Long> countEntry : responsibilitiesCount.entrySet()) {
+            String title = countEntry.getKey();
+            long count = countEntry.getValue();
+            double percentage = (count * TO_PERCENTS) / totalResponsibilities;
+            responsibilitiesPercentage.put(title, percentage);
+        }
+        return responsibilitiesPercentage;
+    }
 
     // 3.2 Stream API with standard collectors
     public static void calculateStatisticsWithStreams(List<Company> companies) {
@@ -72,11 +82,14 @@ public final class StatisticsCalculator {
                 .flatMap(company -> company.getOffices().stream()
                         .flatMap(office -> office.getColleagues().stream()
                                 .flatMap(colleague -> colleague.getJobResponsibilities().stream()
-                                        .map(jobResponsibility -> new AbstractMap.SimpleEntry<>(company.getTitle(), jobResponsibility))
+                                        .map(jobResponsibility
+                                                -> new AbstractMap.SimpleEntry<>(company.getTitle(), jobResponsibility))
                                 )
                         )
                 )
-                .collect(Collectors.groupingBy(Map.Entry::getKey, Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
+                .collect(Collectors.groupingBy(
+                        Map.Entry::getKey, Collectors.mapping(Map.Entry::getValue, Collectors.toList()))
+                );
 
         responsibilitiesByCompany.entrySet().stream()
                 .map(entry -> {
@@ -90,7 +103,7 @@ public final class StatisticsCalculator {
                     Map<String, Double> responsibilitiesPercentage = responsibilitiesCount.entrySet().stream()
                             .collect(Collectors.toMap(
                                     Map.Entry::getKey,
-                                    e -> (e.getValue() * 100.0) / totalResponsibilities
+                                    e -> (e.getValue() * TO_PERCENTS) / totalResponsibilities
                             ));
 
                     log.info(COMPANY + companyName);
@@ -102,7 +115,6 @@ public final class StatisticsCalculator {
                 })
                 .toArray();
     }
-
 
     // 3.3 Custom collector
     public static void calculateStatisticsWithCustomCollector(List<Company> companies) {

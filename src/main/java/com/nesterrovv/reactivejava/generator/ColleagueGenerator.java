@@ -1,7 +1,10 @@
 package com.nesterrovv.reactivejava.generator;
 
-import com.nesterrovv.reactivejava.model.*;
-
+import com.nesterrovv.reactivejava.model.Colleague;
+import com.nesterrovv.reactivejava.model.Color;
+import com.nesterrovv.reactivejava.model.JobResponsibility;
+import com.nesterrovv.reactivejava.model.Office;
+import com.nesterrovv.reactivejava.model.PassportData;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
