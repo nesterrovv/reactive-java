@@ -1,4 +1,4 @@
-package com.nesterrovv.reactivejava.statistics;
+package com.nesterrovv.reactivejava.statistics.serial;
 
 import com.nesterrovv.reactivejava.model.Company;
 import com.nesterrovv.reactivejava.model.JobResponsibility;
@@ -14,18 +14,18 @@ import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-public class StatisticsCollector
+public class SerialStatisticsCollector
         implements Collector<Company, Map<String, List<JobResponsibility>>, Map<String, Map<String, Double>>> {
 
     private static final double TO_PERCENTS = 100.0;
 
-    public static StatisticsCollector collect() {
-        return new StatisticsCollector();
+    public static SerialStatisticsCollector collect() {
+        return new SerialStatisticsCollector();
     }
 
     @Override
     public Supplier<Map<String, List<JobResponsibility>>> supplier() {
-        return HashMap<String, List<JobResponsibility>>::new;
+        return HashMap::new;
     }
 
     @Override
