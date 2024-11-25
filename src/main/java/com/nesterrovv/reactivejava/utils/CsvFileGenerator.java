@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CsvFileGenerator {
+public final class CsvFileGenerator {
 
     private CsvFileGenerator() {}
 

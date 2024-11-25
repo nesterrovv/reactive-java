@@ -10,7 +10,7 @@ public final class SerialStatisticsCalculator {
 
     private SerialStatisticsCalculator() {}
 
-    public static Map<String, Map<String, Double>> calculateStatisticsWithCustomCollector(List<Company> companies) {
+    public static Map<String, Map<String, Double>> calculate(List<Company> companies) {
         return companies.stream().collect(SerialStatisticsCollector.collect());
     }
 
