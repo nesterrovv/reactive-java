@@ -1,0 +1,425 @@
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark
+# Parameters: (collectionSize = 10)
+
+# Run progress: 0.00% complete, ETA 00:20:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 2.188 ms/op
+# Warmup Iteration   2: 4.694 ms/op
+# Warmup Iteration   3: 6.923 ms/op
+# Warmup Iteration   4: 15.464 ms/op
+# Warmup Iteration   5: 19.137 ms/op
+Iteration   1: 10.884 ms/op
+Iteration   2: 929.745 ms/op
+Iteration   3: 52.351 ms/op
+Iteration   4: 17.764 ms/op
+Iteration   5: 12.340 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark":
+  204.617 ±(99.9%) 1562.256 ms/op [Average]
+  (min, avg, max) = (10.884, 204.617, 929.745), stdev = 405.713
+  CI (99.9%): [≈ 0, 1766.873] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark
+# Parameters: (collectionSize = 100)
+
+# Run progress: 8.33% complete, ETA 00:19:48
+# Fork: 1 of 1
+# Warmup Iteration   1: 2.197 ms/op
+# Warmup Iteration   2: 4.748 ms/op
+# Warmup Iteration   3: 6.800 ms/op
+# Warmup Iteration   4: 8.528 ms/op
+# Warmup Iteration   5: 13.611 ms/op
+Iteration   1: 28.026 ms/op
+Iteration   2: 1094.164 ms/op
+Iteration   3: 144.934 ms/op
+Iteration   4: 15.115 ms/op
+Iteration   5: 15.966 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark":
+  259.641 ±(99.9%) 1808.576 ms/op [Average]
+  (min, avg, max) = (15.115, 259.641, 1094.164), stdev = 469.681
+  CI (99.9%): [≈ 0, 2068.217] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark
+# Parameters: (collectionSize = 1000)
+
+# Run progress: 16.67% complete, ETA 00:17:46
+# Fork: 1 of 1
+# Warmup Iteration   1: 4.893 ms/op
+# Warmup Iteration   2: 4.740 ms/op
+# Warmup Iteration   3: 5.844 ms/op
+# Warmup Iteration   4: 6.976 ms/op
+# Warmup Iteration   5: 8.326 ms/op
+Iteration   1: 9.837 ms/op
+Iteration   2: 14.952 ms/op
+Iteration   3: 14.956 ms/op
+Iteration   4: 16.745 ms/op
+Iteration   5: 17.315 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark":
+  14.761 ±(99.9%) 11.354 ms/op [Average]
+  (min, avg, max) = (9.837, 14.761, 17.315), stdev = 2.949
+  CI (99.9%): [3.407, 26.115] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark
+# Parameters: (collectionSize = 10000)
+
+# Run progress: 25.00% complete, ETA 00:15:45
+# Fork: 1 of 1
+# Warmup Iteration   1: 52.868 ms/op
+# Warmup Iteration   2: 39.453 ms/op
+# Warmup Iteration   3: 33.957 ms/op
+# Warmup Iteration   4: 32.212 ms/op
+# Warmup Iteration   5: 32.043 ms/op
+Iteration   1: 28.980 ms/op
+Iteration   2: 28.898 ms/op
+Iteration   3: 28.813 ms/op
+Iteration   4: 30.610 ms/op
+Iteration   5: 29.506 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark":
+  29.362 ±(99.9%) 2.882 ms/op [Average]
+  (min, avg, max) = (28.813, 29.362, 30.610), stdev = 0.748
+  CI (99.9%): [26.480, 32.243] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.parallelCalculatorBenchmark
+# Parameters: (collectionSize = 10)
+
+# Run progress: 33.33% complete, ETA 00:13:53
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.186 ms/op
+# Warmup Iteration   2: 0.182 ms/op
+# Warmup Iteration   3: 0.180 ms/op
+# Warmup Iteration   4: 0.180 ms/op
+# Warmup Iteration   5: 0.178 ms/op
+Iteration   1: 0.182 ms/op
+Iteration   2: 0.180 ms/op
+Iteration   3: 0.181 ms/op
+Iteration   4: 0.182 ms/op
+Iteration   5: 0.181 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.parallelCalculatorBenchmark":
+  0.181 ±(99.9%) 0.003 ms/op [Average]
+  (min, avg, max) = (0.180, 0.181, 0.182), stdev = 0.001
+  CI (99.9%): [0.178, 0.184] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.parallelCalculatorBenchmark
+# Parameters: (collectionSize = 100)
+
+# Run progress: 41.67% complete, ETA 00:12:04
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.285 ms/op
+# Warmup Iteration   2: 0.273 ms/op
+# Warmup Iteration   3: 0.274 ms/op
+# Warmup Iteration   4: 0.282 ms/op
+# Warmup Iteration   5: 0.311 ms/op
+Iteration   1: 0.295 ms/op
+Iteration   2: 0.278 ms/op
+Iteration   3: 0.278 ms/op
+Iteration   4: 0.280 ms/op
+Iteration   5: 0.282 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.parallelCalculatorBenchmark":
+  0.283 ±(99.9%) 0.028 ms/op [Average]
+  (min, avg, max) = (0.278, 0.283, 0.295), stdev = 0.007
+  CI (99.9%): [0.254, 0.311] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.parallelCalculatorBenchmark
+# Parameters: (collectionSize = 1000)
+
+# Run progress: 50.00% complete, ETA 00:10:18
+# Fork: 1 of 1
+# Warmup Iteration   1: 1.030 ms/op
+# Warmup Iteration   2: 0.944 ms/op
+# Warmup Iteration   3: 0.938 ms/op
+# Warmup Iteration   4: 0.938 ms/op
+# Warmup Iteration   5: 0.971 ms/op
+Iteration   1: 0.952 ms/op
+Iteration   2: 0.941 ms/op
+Iteration   3: 0.942 ms/op
+Iteration   4: 0.951 ms/op
+Iteration   5: 0.947 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.parallelCalculatorBenchmark":
+  0.947 ±(99.9%) 0.019 ms/op [Average]
+  (min, avg, max) = (0.941, 0.947, 0.952), stdev = 0.005
+  CI (99.9%): [0.928, 0.966] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.parallelCalculatorBenchmark
+# Parameters: (collectionSize = 10000)
+
+# Run progress: 58.33% complete, ETA 00:08:34
+# Fork: 1 of 1
+# Warmup Iteration   1: 7.084 ms/op
+# Warmup Iteration   2: 5.834 ms/op
+# Warmup Iteration   3: 5.677 ms/op
+# Warmup Iteration   4: 5.687 ms/op
+# Warmup Iteration   5: 5.659 ms/op
+Iteration   1: 5.712 ms/op
+Iteration   2: 5.665 ms/op
+Iteration   3: 5.674 ms/op
+Iteration   4: 5.672 ms/op
+Iteration   5: 5.656 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.parallelCalculatorBenchmark":
+  5.676 ±(99.9%) 0.083 ms/op [Average]
+  (min, avg, max) = (5.656, 5.676, 5.712), stdev = 0.021
+  CI (99.9%): [5.593, 5.759] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.serialCalculatorBenchmark
+# Parameters: (collectionSize = 10)
+
+# Run progress: 66.67% complete, ETA 00:06:50
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.013 ms/op
+# Warmup Iteration   2: 0.012 ms/op
+# Warmup Iteration   3: 0.016 ms/op
+# Warmup Iteration   4: 0.016 ms/op
+# Warmup Iteration   5: 0.016 ms/op
+Iteration   1: 0.014 ms/op
+Iteration   2: 0.014 ms/op
+Iteration   3: 0.012 ms/op
+Iteration   4: 0.016 ms/op
+Iteration   5: 0.013 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.serialCalculatorBenchmark":
+  0.014 ±(99.9%) 0.005 ms/op [Average]
+  (min, avg, max) = (0.012, 0.014, 0.016), stdev = 0.001
+  CI (99.9%): [0.009, 0.019] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.serialCalculatorBenchmark
+# Parameters: (collectionSize = 100)
+
+# Run progress: 75.00% complete, ETA 00:05:07
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.145 ms/op
+# Warmup Iteration   2: 0.139 ms/op
+# Warmup Iteration   3: 0.131 ms/op
+# Warmup Iteration   4: 0.127 ms/op
+# Warmup Iteration   5: 0.129 ms/op
+Iteration   1: 0.160 ms/op
+Iteration   2: 0.127 ms/op
+Iteration   3: 0.134 ms/op
+Iteration   4: 0.139 ms/op
+Iteration   5: 0.133 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.serialCalculatorBenchmark":
+  0.139 ±(99.9%) 0.048 ms/op [Average]
+  (min, avg, max) = (0.127, 0.139, 0.160), stdev = 0.013
+  CI (99.9%): [0.090, 0.187] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.serialCalculatorBenchmark
+# Parameters: (collectionSize = 1000)
+
+# Run progress: 83.33% complete, ETA 00:04:01
+# Fork: 1 of 1
+# Warmup Iteration   1: 1.390 ms/op
+# Warmup Iteration   2: 1.275 ms/op
+# Warmup Iteration   3: 1.281 ms/op
+# Warmup Iteration   4: 1.294 ms/op
+# Warmup Iteration   5: 1.301 ms/op
+Iteration   1: 1.325 ms/op
+Iteration   2: 1.273 ms/op
+Iteration   3: 1.304 ms/op
+Iteration   4: 1.352 ms/op
+Iteration   5: 1.330 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.serialCalculatorBenchmark":
+  1.317 ±(99.9%) 0.116 ms/op [Average]
+  (min, avg, max) = (1.273, 1.317, 1.352), stdev = 0.030
+  CI (99.9%): [1.201, 1.433] (assumes normal distribution)
+
+
+# JMH version: 1.35
+# VM version: JDK 21.0.1, OpenJDK 64-Bit Server VM, 21.0.1+12-29
+# VM invoker: C:\Users\nesterrovv\.jdks\openjdk-21.0.1\bin\java.exe
+# VM options: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\lib\idea_rt.jar=56930:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1.6\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.serialCalculatorBenchmark
+# Parameters: (collectionSize = 10000)
+
+# Run progress: 91.67% complete, ETA 00:01:58
+# Fork: 1 of 1
+# Warmup Iteration   1: 13.614 ms/op
+# Warmup Iteration   2: 12.611 ms/op
+# Warmup Iteration   3: 12.454 ms/op
+# Warmup Iteration   4: 12.373 ms/op
+# Warmup Iteration   5: 12.288 ms/op
+Iteration   1: 12.185 ms/op
+Iteration   2: 12.209 ms/op
+Iteration   3: 12.809 ms/op
+Iteration   4: 12.715 ms/op
+Iteration   5: 12.267 ms/op
+
+
+Result "com.nesterrovv.reactivejava.benchmark.StatisticsCalculatorBenchmark.serialCalculatorBenchmark":
+  12.437 ±(99.9%) 1.156 ms/op [Average]
+  (min, avg, max) = (12.185, 12.437, 12.809), stdev = 0.300
+  CI (99.9%): [11.281, 13.593] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:23:28
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                                          (collectionSize)  Mode  Cnt    Score      Error  Units
+StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark                10  avgt    5  204.617 ± 1562.256  ms/op
+StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark               100  avgt    5  259.641 ± 1808.576  ms/op
+StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark              1000  avgt    5   14.761 ±   11.354  ms/op
+StatisticsCalculatorBenchmark.improvedParallelCalculatorBenchmark             10000  avgt    5   29.362 ±    2.882  ms/op
+StatisticsCalculatorBenchmark.parallelCalculatorBenchmark                        10  avgt    5    0.181 ±    0.003  ms/op
+StatisticsCalculatorBenchmark.parallelCalculatorBenchmark                       100  avgt    5    0.283 ±    0.028  ms/op
+StatisticsCalculatorBenchmark.parallelCalculatorBenchmark                      1000  avgt    5    0.947 ±    0.019  ms/op
+StatisticsCalculatorBenchmark.parallelCalculatorBenchmark                     10000  avgt    5    5.676 ±    0.083  ms/op
+StatisticsCalculatorBenchmark.serialCalculatorBenchmark                          10  avgt    5    0.014 ±    0.005  ms/op
+StatisticsCalculatorBenchmark.serialCalculatorBenchmark                         100  avgt    5    0.139 ±    0.048  ms/op
+StatisticsCalculatorBenchmark.serialCalculatorBenchmark                        1000  avgt    5    1.317 ±    0.116  ms/op
+StatisticsCalculatorBenchmark.serialCalculatorBenchmark                       10000  avgt    5   12.437 ±    1.156  ms/op
+
+Process finished with exit code 0
