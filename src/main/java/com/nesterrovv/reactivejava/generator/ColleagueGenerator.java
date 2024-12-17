@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public final class ColleagueGenerator {
 
     public static final int MIN_JOBS_NUMBER = 1;
@@ -68,6 +70,12 @@ public final class ColleagueGenerator {
 
     public static List<Colleague> generateColleagues(int count, Office office) {
         List<Colleague> colleagues = new ArrayList<>();
+//        try {
+//            long delay = Long.parseLong(System.getenv("DELAY"));
+//            Thread.sleep(delay);
+//        } catch (Exception ignored) {
+//            // unnecessary handling
+//        }
         for (int i = 0; i < count; i++) {
             colleagues.add(generateColleague(office));
         }
