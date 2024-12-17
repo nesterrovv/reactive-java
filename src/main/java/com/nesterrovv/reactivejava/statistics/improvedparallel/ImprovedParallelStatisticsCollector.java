@@ -52,7 +52,7 @@ public class ImprovedParallelStatisticsCollector
 
     @Override
     public Function<Map<String, List<JobResponsibility>>, Map<String, Map<String, Double>>> finisher() {
-        return map -> forkJoinPool.invoke(new FinisherTask(map));
+        return map -> forkJoinPool.invoke(new SplitAndComputeTask(map));
     }
 
     @Override
@@ -77,35 +77,62 @@ public class ImprovedParallelStatisticsCollector
         }
     }
 
-    private static class FinisherTask extends RecursiveTask<Map<String, Map<String, Double>>> {
+    private static class SplitAndComputeTask extends RecursiveTask<Map<String, Map<String, Double>>> {
 
         private final Map<String, List<JobResponsibility>> map;
 
-        FinisherTask(Map<String, List<JobResponsibility>> map) {
+        SplitAndComputeTask(Map<String, List<JobResponsibility>> map) {
             this.map = map;
         }
 
         @Override
         protected Map<String, Map<String, Double>> compute() {
-            return map.entrySet().parallelStream()
-                    .collect(Collectors.toMap(
-                            Map.Entry::getKey,
-                            entry -> {
-                                var responsibilityCount = entry.getValue().parallelStream()
-                                        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+            int splitSize = Math.max(1, map.size() / Runtime.getRuntime().availableProcessors());
+            List<Map.Entry<String, List<JobResponsibility>>> entries = List.copyOf(map.entrySet());
 
-                                long totalResponsibilities = responsibilityCount.values().parallelStream()
-                                        .mapToLong(Long::longValue)
-                                        .sum();
+            List<RecursiveTask<Map<String, Map<String, Double>>>> tasks = entries.stream()
+                    .collect(Collectors.groupingBy(e -> entries.indexOf(e) / splitSize))
+                    .values().stream()
+                    .map(SplitTask::new)
+                    .collect(Collectors.toList());
 
-                                return responsibilityCount.entrySet().parallelStream()
-                                        .collect(Collectors.toMap(
-                                                frequencyEntry -> frequencyEntry.getKey().getTitle(),
-                                                frequencyEntry -> (frequencyEntry.getValue() * TO_PERCENTS)
-                                                        / totalResponsibilities
-                                        ));
-                            }
-                    ));
+            invokeAll(tasks);
+
+            return tasks.stream()
+                    .map(RecursiveTask::join)
+                    .flatMap(result -> result.entrySet().stream())
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        }
+    }
+
+    private static class SplitTask extends RecursiveTask<Map<String, Map<String, Double>>> {
+
+        private final List<Map.Entry<String, List<JobResponsibility>>> entries;
+
+        SplitTask(List<Map.Entry<String, List<JobResponsibility>>> entries) {
+            this.entries = entries;
+        }
+
+        @Override
+        protected Map<String, Map<String, Double>> compute() {
+            return entries.stream().collect(Collectors.toMap(
+                    Map.Entry::getKey,
+                    entry -> {
+                        var responsibilityCount = entry.getValue().parallelStream()
+                                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+                        long totalResponsibilities = responsibilityCount.values().parallelStream()
+                                .mapToLong(Long::longValue)
+                                .sum();
+
+                        return responsibilityCount.entrySet().parallelStream()
+                                .collect(Collectors.toMap(
+                                        frequencyEntry -> frequencyEntry.getKey().getTitle(),
+                                        frequencyEntry -> (frequencyEntry.getValue() * TO_PERCENTS)
+                                                / totalResponsibilities
+                                ));
+                    }
+            ));
         }
     }
 }
